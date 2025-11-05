@@ -110,6 +110,7 @@
         android:id="@+id/seekBar2"
         android:layout_width="145dp"
         android:layout_height="57dp"
+        android:max="100"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.402"

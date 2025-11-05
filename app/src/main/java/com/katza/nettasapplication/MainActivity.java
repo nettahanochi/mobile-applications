@@ -88,17 +88,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                float currentAlpha = seekBar2.getAlpha();
 
+                if (fromUser) {
+                    if (seekBar2.getProgress() > 50) {
+                        // אם עברנו את האמצע – נעשה אותו יותר שקוף
+                        imageView3.setAlpha(Math.max(0.1f, currentAlpha - 0.1f));
+                    } else {
+                        // אם מתחת לאמצע – נחזיר אותו להיות אטום יותר
+                        imageView3.setAlpha(Math.min(1f, currentAlpha + 0.1f));
+                    }
+                }
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(MainActivity.this, "נלחץ", Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                Toast.makeText(MainActivity.this, "שוחרר", Toast.LENGTH_SHORT).show();
             }
         });
     }
