@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
@@ -15,7 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class DialogCustomActivity extends AppCompatActivity {
     SharedPreferences sp;
     Dialog d;
-    EditText btnCustomLogin, btnLogin, etuserName, etPass;
+    Button btnCustomLogin, btnLogin;
+    EditText etuserName, etPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
