@@ -1,6 +1,10 @@
 package com.katza.nettasapplication;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -8,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextText;
     private Switch switch2;
     private ImageView imageView3;
+    TextView tv;
 
     SeekBar seekBar2;
     @Override
@@ -49,7 +55,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         intViews();
+
+        tv=(TextView) findViewById(R.id.tv);
+
+        registerForContextMenu(tv);
     }
+
+
+
 
 
     private void intViews() {
@@ -127,4 +140,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        super.onOptionsItemSelected(item);
+
+        int id = item.getItemId();
+
+        if(id==R.id.action_login){
+            Toast.makeText(this,"You selescted login", Toast.LENGTH_SHORT).show();
+        }
+        else if(R.id.action_register==id){
+            Toast.makeText(this,"you selescted register", Toast.LENGTH_SHORT).show();
+        }
+        else if (R.id.action_start==id){
+            Toast.makeText(this,"You selescted start", Toast.LENGTH_SHORT).show();
+        }
+
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+
+        MenuInflater infalter=getMenuInflater();
+        infalter.inflate(R.menu.context_menu, menu);
+    }
+
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+         super.onContextItemSelected(item);
+
+
+        if (item.getItemId()==R.id.firstline)
+        {
+            Toast.makeText(this,"You selected first line",Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if (item.getItemId()==R.id.secondline)
+        {
+            Toast.makeText(this,"You selected second line",Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+    }
+
+
 }
