@@ -15,6 +15,12 @@
         android:showAsAction="never"
         />
     <item
+        android:id="@+id/DynamicActivity"
+        android:title="Register"
+        android:orderInCategory="200"
+        android:showAsAction="never"
+        />
+    <item
         android:id="@+id/action_start"
         android:title="Start"
         android:orderInCategory="300"

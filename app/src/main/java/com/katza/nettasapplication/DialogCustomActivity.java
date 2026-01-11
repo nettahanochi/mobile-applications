@@ -30,8 +30,20 @@ public class DialogCustomActivity extends AppCompatActivity {
         setContentView(R.layout.dialog_custom_activity);
 
         setContentView(R.layout.activity_main);
-        btnAlert=(Button)findViewById(R.id/btnAlert);
-        btnAlert.setOnClickListener(this);
+        btnAlert = (Button) findViewById(R.id.btnAlert);
+        btnAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(DialogCustomActivity.this);
+                builder.setTitle("Select name");
+                builder.setMessage("this is a massage");
+                builder.setCancelable(true);
+                builder.setPositiveButton("I agree for the rules", new HandleAlertDialogListener());
+                builder.setNegativeButton("No, I dont agree", new HandleAlertDialogListener());
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
         btnLogin = findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -63,28 +75,13 @@ public class DialogCustomActivity extends AppCompatActivity {
             }
         });
         d.show();
-
-    }
-
-    public class HandleAlertDialogListener implements DialogInterface.OnClickListener
-    {
-@Override
-public void onClick(View v, DialogInterface dialog, int which) {
-    Toast.makeText(MainActivity.this, "U SELECTED"+which, Toast.LENGTH_SHORT).show();
-    if (v==btnAlert)
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select name");
-        builder.setMessage("this is a massage");
-        builder.setCancelable(true);
-        builder.setPositiveButton("I agree for the rules", new HandleAlertDialogListener());
-        builder.setNegativeButton("No, I dont agree", new HandleAlertDialogListener());
-        AlertDialog dialog=builder.create();
-        dialog.Show();
-
     }
 
 
-
-
+    public class HandleAlertDialogListener implements DialogInterface.OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            Toast.makeText(DialogCustomActivity.this, "U SELECTED" + which, Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.katza.nettasapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView tv;
 
     SeekBar seekBar2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         intViews();
 
-        tv=(TextView) findViewById(R.id.tv);
+        tv = (TextView) findViewById(R.id.tv);
 
         registerForContextMenu(tv);
     }
-
-
-
 
 
     private void intViews() {
@@ -91,8 +90,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else
                     imageView3.setVisibility(View.INVISIBLE);
             }
-
-
 
 
         });
@@ -143,24 +140,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
+    public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
         int id = item.getItemId();
 
-        if(id==R.id.action_login){
-            Toast.makeText(this,"You selescted login", Toast.LENGTH_SHORT).show();
-        }
-        else if(R.id.action_register==id){
-            Toast.makeText(this,"you selescted register", Toast.LENGTH_SHORT).show();
-        }
-        else if (R.id.action_start==id){
-            Toast.makeText(this,"You selescted start", Toast.LENGTH_SHORT).show();
+        if (id == R.id.action_login) {
+            Toast.makeText(this, "You selescted login", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, DynamicActivity.class);
+            startActivity(intent);
+        } else if (R.id.action_register == id) {
+            Toast.makeText(this, "you selescted register", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, DialogCustomActivity.class);
+            startActivity(intent);
+        } else if (R.id.action_start == id) {
+            Toast.makeText(this, "You selescted start", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity2.class);
+            startActivity(intent);
         }
 
         return true;
@@ -171,28 +171,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreateContextMenu(menu, v, menuInfo);
 
 
-        MenuInflater infalter=getMenuInflater();
+        MenuInflater infalter = getMenuInflater();
         infalter.inflate(R.menu.context_menu, menu);
     }
 
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-         super.onContextItemSelected(item);
+        super.onContextItemSelected(item);
 
 
-        if (item.getItemId()==R.id.firstline)
-        {
-            Toast.makeText(this,"You selected first line",Toast.LENGTH_SHORT).show();
+        if (item.getItemId() == R.id.firstline) {
+            Toast.makeText(this, "You selected first line", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (item.getItemId() == R.id.secondline) {
+            Toast.makeText(this, "You selected second line", Toast.LENGTH_SHORT).show();
             return true;
         }
-        else if (item.getItemId()==R.id.secondline)
-        {
-            Toast.makeText(this,"You selected second line",Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        return false;
     }
-
-
-}

@@ -127,15 +127,15 @@
         android:padding="10dp"
         android:background="@android:color/white"
         >
+
         <TextView
-            android:text="Click me more than  seconds"
-            android:textSize="20sp"
-            android:textColor="#d90276"
-            android:layout_gravity="center"
+            android:id="@+id/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv"
-            />
+            android:layout_gravity="center"
+            android:text="Click me more than  seconds"
+            android:textColor="#d90276"
+            android:textSize="20sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
