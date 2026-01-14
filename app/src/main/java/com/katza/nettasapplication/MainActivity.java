@@ -175,11 +175,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         infalter.inflate(R.menu.context_menu, menu);
     }
 
-
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         super.onContextItemSelected(item);
-
 
         if (item.getItemId() == R.id.firstline) {
             Toast.makeText(this, "You selected first line", Toast.LENGTH_SHORT).show();
@@ -188,4 +186,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, "You selected second line", Toast.LENGTH_SHORT).show();
             return true;
         }
+
+        return false;
     }
+    }
+
