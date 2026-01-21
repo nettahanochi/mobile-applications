@@ -29,7 +29,6 @@ public class DialogCustomActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.dialog_custom_activity);
 
-        setContentView(R.layout.activity_main);
         btnAlert = (Button) findViewById(R.id.btnAlert);
         btnAlert.setOnClickListener(new View.OnClickListener() {
             @Override
